@@ -1,20 +1,10 @@
 import {Book} from './component/Book'
 import './App.css';
 import { useState } from 'react';
+import {data} from './data';
 
 function App() {
-  const [bookList, setBookLIst] = useState([
-    {
-      name : "책 1",
-      content : "책 임",
-      thumb : 0,
-    },
-    {
-      name : "책 2",
-      content : "책 B",
-      thumb : 0,
-    },
-  ]);
+  const [bookList, setBookLIst] = useState(data);
   const [inputName,setInputname] = useState("");
   const [inputContent,setInputContent] = useState("");
   const [bookIndex, setBookIndex] = useState(null);
