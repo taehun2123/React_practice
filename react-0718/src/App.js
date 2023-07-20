@@ -6,11 +6,13 @@ function App() {
   const [bookList, setBookLIst] = useState([
     {
       name : "책 1",
-      content : "책 임"
+      content : "책 임",
+      thumb : 0,
     },
     {
       name : "책 2",
-      content : "책 B"
+      content : "책 B",
+      thumb : 0,
     },
   ]);
   const [inputName,setInputname] = useState("");
@@ -18,7 +20,7 @@ function App() {
   const [bookIndex, setBookIndex] = useState(null);
 
   function addBook() {
-    setBookLIst([...bookList, {name:inputName, content : inputContent}]);
+    setBookLIst([...bookList, {name:inputName, content : inputContent, thumb : 0}]);
     setInputname("");
     setInputContent("");
     setBookIndex(null);
@@ -45,6 +47,12 @@ function App() {
     setInputname("");
     setInputContent("");
   }
+
+  function ttabong(index){
+    const temp = [...bookList];
+    temp[index].thumb += 1;
+    setBookLIst(temp);
+  }
   return (
     <div className="App">
       <h2>책 {bookIndex !== null ? "수정" : "등록"}</h2>
@@ -65,7 +73,7 @@ function App() {
       <ul>
         {
           bookList ? (bookList.map((book, index)=>{
-            return <Book id={index} name={book.name} content={book.content} removeFunc={removeBook} selectedBook={selectedBook}/>
+            return <Book id={index} thumb={book.thumb} name={book.name} content={book.content} removeFunc={removeBook} selectedBook={selectedBook} ttabong={ttabong}/>
           }))
           : "책이 없습니다..."
         }
